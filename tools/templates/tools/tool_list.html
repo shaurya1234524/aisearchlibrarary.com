@@ -1,0 +1,616 @@
+{% load static %}
+{% load query_transform %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='impact-site-verification' value='f3026f17-c932-42c1-8812-9fcd90aea3f2'>
+    <meta name="description" content="Discover 500+ AI tools across 50+ categories. Free, premium, and freemium AI solutions for productivity, marketing, design, development, writing, and more. Expert reviews, user ratings, and detailed comparisons.">
+    <meta name="keywords" content="Ai tools list , Free Ai Tools,Best Ai Tools , Ai tools 2025 ,New Ai 2025, Ai tools directory , Ai tools in 2025">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content=" Ai tools Latest">
+    <meta name="robots" content="index, follow">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MRD5F782HT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MRD5F782HT');
+    </script>
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="General">
+    <meta name="distribution" content="Global">
+    <meta name="geo.region" content="US">
+    <meta name="geo.placename" content="United States">
+    <link rel="icon" href="https://shaurya1234512.s3.eu-north-1.amazonaws.com/Logo.png" type="image/x-icon">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Latest Ai tools - Discover 500+ AI Tools for Productivity & Innovation">
+    <meta property="og:description" content="Explore the world's most comprehensive AI tools directory. Find productivity, marketing, design, development, and writing AI tools with expert reviews and user ratings.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aitoolslatest.site/">
+    <meta property="og:image" content="https://shaurya1234512.s3.eu-north-1.amazonaws.com/Logo.png">
+    <meta property="og:site_name" content="Ai Tools Latest">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ai tools Latest - Discover 500+ AI Tools">
+    <meta name="twitter:description" content="Explore the world's most comprehensive AI tools directory with expert reviews and user ratings.">
+    <meta name="twitter:image" content="https://shauryabaycket345321.s3.eu-north-1.amazonaws.com/Logo.png">
+    <meta name="twitter:site" content="@aitoolslat56215">
+    <meta name="twitter:creator" content="@aitoolslatest">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://aitoolslatest.site/">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Ai Tools Latest",
+            "alternateName": "AiToolsLatest",
+            "url": "https://aitoolslatest.site/",
+            "description": "Comprehensive directory of AI tools for productivity, marketing, design, development, and more.",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://aitoolslatest.site/?search={search_term_string}",
+                "query-input": "required name=search_term_string"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Ai Tools Latest",
+                "url": "https://aitoolslatest.site/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://shaurya1234512.s3.eu-north-1.amazonaws.com/Logo.png"
+                }
+            },
+            "mainEntity": {
+                "@type": "ItemList",
+                "name": "AI Tools Directory",
+                "description": "Comprehensive list of AI tools across multiple categories.",
+                "numberOfItems": 500
+            },
+            "inLanguage": "en"
+        }
+    </script>
+    
+    <title>Latest AI Tools 2025 - Discover 500+ Best AI Tools for Productivity, Marketing, Design & More</title>
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Load CSS -->
+    <link rel="stylesheet" href="{% static 'tools_list.css' %}">
+    
+    <!-- Load non-critical CSS asynchronously -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>AiToolsLatest</span>
+            </div>
+            <div class="nav-links">
+                <a href="{% url 'tools:list' %}">Home</a>
+                <a href="{% url 'submit' %}">Submit Tool</a>
+                <a href="{% url 'aboutus'%}">About</a>
+                <a href="#categories">Categories</a>
+                {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+                
+                {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'signup' %}">Sign Up</a>
+                {% endif %}
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section - Critical above-the-fold content -->
+    <section class="hero">
+        <div class="container">
+            <h1>Discover the Best AI Tools</h1>
+            <p>Here is the curated list of 1000+ new AI tools .It contains AI tools list with neccessary details.Explore the list of all AI tools.</p>
+        </div>
+    </section>
+
+    <!-- Categories Section - Critical above-the-fold content -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2>Explore All Categories</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: #666; font-size: 1.1rem;">Discover AI tools across {{ categories|length }} specialized categories</p>
+            <div class="categories-grid">
+                <!-- Top 6 Most Popular Categories -->
+                <a href="{% url 'tools:productivity_tools' %}" class="category-link" data-category="Productivity">
+                    <i class="fas fa-rocket"></i> Productivity
+                </a>
+                <a href="{% url 'tools:marketing_tools' %}" class="category-link" data-category="Marketing">
+                    <i class="fas fa-bullhorn"></i> Marketing
+                </a>
+                <a href="{% url 'tools:generative_ai' %}" class="category-link" data-category="Design">
+                    <i class="fas fa-palette"></i>Generative Ai 
+                </a>
+                <a href="{% url 'tools:image_generation' %}" class="category-link" data-category="AI Art">
+                    <i class="fas fa-paint-brush"></i> Image gen
+                </a>
+                <a href="{% url 'tools:video_generation' %}" class="category-link" data-category="Writing">
+                    <i class="fas fa-pen"></i> Video Gen
+                </a>
+                <a href="{% url 'tools:education_tools' %}" class="category-link" data-category="Education">
+                    <i class="fas fa-graduation-cap"></i> Web dev
+                </a>
+                <a href="{% url 'tools:data_analysis_tools' %}" class="category-link" data-category="Data Analysis">
+                    <i class="fas fa-chart-line"></i> Data Analysis
+                </a>
+                <a href="{% url 'tools:automation_tools' %}" class="category-link" data-category="Automation">
+                    <i class="fas fa-cogs"></i> Automation
+                </a>
+                <a href="{% url 'tools:ai_chatbots' %}" class="category-link" data-category="Cybersecurity">
+                    <i class="fas fa-shield-alt"></i> AI  Chatbots
+                </a>
+                
+                <!-- View All Categories Link -->
+              
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section - Critical above-the-fold content -->
+    <section class="search-section">
+        <div class="container search-container">
+            <form method="get">
+                <input type="text" name="search" placeholder="Search tools..." value="{{ search_query }}">
+                <select name="pricing">
+                    <option value="">All Pricing</option>
+                    <option value="Free" {% if request.GET.pricing == 'Free' %}selected{% endif %}>Free</option>
+                    <option value="Premium" {% if request.GET.pricing == 'Premium' %}selected{% endif %}>Premium</option>
+                    <option value="Freemium" {% if request.GET.pricing == 'Freemium' %}selected{% endif %}>Freemium</option>
+                </select>
+                <select name="sort">
+                    <option value="">Sort By</option>
+                    <option value="upvotes" {% if request.GET.sort == 'upvotes' %}selected{% endif %}>Most Upvotes</option>
+                    <option value="created" {% if request.GET.sort == 'created' %}selected{% endif %}>Newest</option>
+                </select>
+                <button type="submit">Filter</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Tools Section - Critical above-the-fold content -->
+    <section class="tools-section">
+        <div class="container">
+            <h2>Featured AI Tools</h2>
+            <div class="tools-grid">
+                {% for tool in tools %}
+                <div class="tool-box">
+                    {% if tool.image %}
+                        <a href="{% url 'tools:detail' tool.id %}">
+                            <img src="{{ tool.image.url }}" alt="{{ tool.name }}" class="tool-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <div class="tool-image-fallback" style="display:none;"></div>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'tools:detail' tool.id %}">
+                            <div class="tool-image" style="display:flex; align-items:center; justify-content:center; color:#999; font-size:12px;">No Image</div>
+                        </a>
+                    {% endif %}
+                    <div class="tool-content">
+                        <a href="{% url 'tools:detail' tool.id %}" style="text-decoration: none; color: inherit;">
+                            <div class="tool-name">{{ tool.name }}</div>
+                        </a>
+                        <div class="tool-description">{{ tool.description|truncatewords:20 }}</div>
+                        <div class="tool-meta">
+                            <span class="pricing-label {{ tool.pricing }}">{{ tool.pricing }}</span>
+                            <span>Upvotes: <span id="upvotes-{{ tool.id }}">{{ tool.upvotes }}</span></span>
+                        </div>
+                        <div class="tool-tags">{{ tool.tags|default:"None" }}</div>
+                        <div class="tool-actions">
+                            {% if tool.website %}
+                                <a href="{{ tool.website }}" target="_blank">Visit Site</a>
+                            {% else %}
+                                <a href="#" style="background-color: #6c757d; cursor: not-allowed;">No Website</a>
+                            {% endif %}
+                            {% if user.is_authenticated %}
+                                <button type="button" onclick="upvote({{ tool.id }})">Upvote</button>
+                            {% else %}
+                                <a href="{% url 'login' %}?next={{ request.path }}">Login to Upvote</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                    <p>No tools found.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pagination -->
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?{% url_replace request 'page' page_obj.previous_page_number %}">Previous</a>
+        {% endif %}
+
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <span class="current" style="font-weight:bold; margin:0 4px;">{{ num }}</span>
+            {% else %}
+                <a href="?{% url_replace request 'page' num %}" style="margin:0 2px;">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?{% url_replace request 'page' page_obj.next_page_number %}">Next</a>
+        {% endif %}
+    </div>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2>How Latest Ai Tools Works</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>1. Discover</h3>
+                    <p>Browse our comprehensive directory of 500+ AI tools across 50+ categories. Use our advanced filters to find exactly what you need.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>2. Evaluate</h3>
+                    <p>Read expert reviews, check user ratings, and compare features. Our community-driven approach ensures you get unbiased insights.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>3. Implement</h3>
+                    <p>Choose the perfect AI tool for your needs and start boosting your productivity, creativity, and business results today.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - Enhanced -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Why Choose Latest Ai Tools?</h2>
+                    <div class="feature">
+                        <h4><i class="fas fa-check-circle"></i>Comprehensive Database</h4>
+                        <p>500+ carefully curated AI tools across all major categories and industries.</p>
+                    </div>
+                    <div class="feature">
+                        <h4><i class="fas fa-check-circle"></i>Expert Reviews</h4>
+                        <p>Detailed reviews and comparisons written by AI experts and industry professionals.</p>
+                    </div>
+                    <div class="feature">
+                        <h4><i class="fas fa-check-circle"></i>Community Driven</h4>
+                        <p>Real user ratings, reviews, and upvotes help you make informed decisions.</p>
+                    </div>
+                    <div class="feature">
+                        <h4><i class="fas fa-check-circle"></i>Always Updated</h4>
+                        <p>We continuously add new tools and update existing ones to keep you ahead of the curve.</p>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stats-card">
+                        <h3>Trusted by 100,000+ Users</h3>
+                        <p>Join thousands of professionals, entrepreneurs, and AI enthusiasts who rely on Latest Ai Tools to discover the best AI solutions.</p>
+                        <div class="stats-numbers">
+                            <div class="stat">
+                                <div class="stat-value">95%</div>
+                                <div class="stat-label">Satisfaction Rate</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">4.9/5</div>
+                                <div class="stat-label">Average Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">24/7</div>
+                                <div class="stat-label">Support</div>
+                            </div>
+                        </div>
+                        <a href="{% url 'submit' %}" class="submit-tool-btn">Submit Your AI Tool</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section - Below the fold, lazy loaded -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2>Our Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-box">
+                    <h3>500+</h3>
+                    <p>AI Tools Listed</p>
+                </div>
+                <div class="achievement-box">
+                    <h3>100k+</h3>
+                    <p>Monthly Visitors</p>
+                </div>
+                <div class="achievement-box">
+                    <h3>95%</h3>
+                    <p>User Satisfaction</p>
+                </div>
+                <div class="achievement-box">
+                    <h3>50+</h3>
+                    <p>Categories Covered</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Tools Section -->
+    <section id="featured-tools" class="featured-tools">
+        <div class="container">
+            <h2>Featured AI Tools This Week</h2>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <h4><i class="fas fa-crown"></i>Top Rated Tool</h4>
+                    <h3>ChatGPT by OpenAI</h3>
+                    <p>Advanced conversational AI for writing, coding, and creative tasks.</p>
+                    <div class="featured-meta">
+                        <span class="pricing-label Free">Free & Premium</span>
+                        <span class="rating">⭐ 4.9/5</span>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <h4><i class="fas fa-rocket"></i>Rising Star</h4>
+                    <h3>Midjourney</h3>
+                    <p>AI-powered image generation tool for artists and designers.</p>
+                    <div class="featured-meta">
+                        <span class="pricing-label Freemium">Freemium</span>
+                        <span class="rating">⭐ 4.8/5</span>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <h4><i class="fas fa-fire"></i>Trending</h4>
+                    <h3>Notion AI</h3>
+                    <p>AI writing assistant integrated into your workspace.</p>
+                    <div class="featured-meta">
+                        <span class="pricing-label Premium">Premium</span>
+                        <span class="rating">⭐ 4.7/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section - Enhanced -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h4 onclick="toggleFAQ(this)">
+                        <i class="fas fa-plus"></i>
+                        How can I submit my AI tool to the directory?
+                    </h4>
+                    <div class="faq-answer">
+                        <p>Submitting your AI tool is completely free and straightforward. Simply click the "Submit Tool" button in our navigation bar, fill out the required information including tool name, description, category, pricing model, and website URL. Our team reviews all submissions within 24-48 hours to ensure quality and accuracy before publishing.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h4 onclick="toggleFAQ(this)">
+                        <i class="fas fa-plus"></i>
+                        What criteria do you use to evaluate AI tools?
+                    </h4>
+                    <div class="faq-answer">
+                        <p>We evaluate tools based on functionality, user experience, innovation, reliability, pricing value, and community feedback. Our expert team tests each tool thoroughly and considers factors like ease of use, feature completeness, customer support, and overall value proposition before featuring them in our directory.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h4 onclick="toggleFAQ(this)">
+                        <i class="fas fa-plus"></i>
+                        How often is the directory updated with new tools?
+                    </h4>
+                    <div class="faq-answer">
+                        <p>We update our directory daily with new AI tools and regularly refresh existing listings with the latest information, features, and pricing updates. Our team monitors the AI landscape continuously to ensure we feature the most current and relevant tools available in the market.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h4 onclick="toggleFAQ(this)">
+                        <i class="fas fa-plus"></i>
+                        Can I get featured or promoted if I have a premium tool?
+                    </h4>
+                    <div class="faq-answer">
+                        <p>While we don't accept payment for featured placements, we do offer various promotional opportunities for high-quality tools. Premium tools that receive strong community feedback and demonstrate exceptional value may be featured in our weekly highlights, newsletter, or social media channels. Contact our team to learn more about partnership opportunities.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h4 onclick="toggleFAQ(this)">
+                        <i class="fas fa-plus"></i>
+                        How do the upvote and rating systems work?
+                    </h4>
+                    <div class="faq-answer">
+                        <p>Our upvote system allows registered users to show appreciation for tools they've used and found valuable. Each user can upvote a tool only once, ensuring fair representation. Ratings are based on user feedback, expert reviews, and our internal evaluation criteria, helping the community identify the most reliable and effective AI solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Below the fold, lazy loaded -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Ai Tools Latest</h3>
+                    <p>Ai Tools Latest is the leading directory for discovering and evaluating artificial intelligence tools across all industries. Our mission is to help businesses and professionals leverage AI technology to drive innovation and growth.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61574637514672"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/shaurya_si18724"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/109309924/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/shaurya_sing22/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{% url 'tools:list' %}">Home</a></li>
+                        <li><a href="{% url 'submit' %}">Submit a Tool</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Categories</h3>
+                    <ul>
+                        <li><a href="?category=Productivity">Productivity</a></li>
+                        <li><a href="?category=Marketing">Marketing</a></li>
+                        <li><a href="?category=Design">Design</a></li>
+                        <li><a href="?category=Development">Development</a></li>
+                        <li><a href="?category=Writing">Writing</a></li>
+                        <li><a href="?category=Education">Education</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter to get updates on new AI tools and industry trends.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Latest Ai Tools. All rights reserved. | <a href="{% url 'privacy_policy' %}">Privacy Policy</a> | <a href="{% url 'terms_of_service' %}">Terms of Service</a> | <a href="{% url 'cookie_policy'%}">Cookie Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+<script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+
+    // Check for saved theme preference or default to light
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+
+    // Update the button icon based on the current theme
+    if (currentTheme === 'dark') {
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        // Update the button icon
+        if (newTheme === 'dark') {
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Enhanced FAQ toggle functionality
+    function toggleFAQ(element) {
+        const answer = element.nextElementSibling;
+        const icon = element.querySelector('i');
+        const isOpen = answer.style.display === 'block';
+        
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-answer').forEach(ans => {
+            ans.style.display = 'none';
+        });
+        document.querySelectorAll('.faq-item h4 i').forEach(ic => {
+            ic.className = 'fas fa-plus';
+        });
+        
+        // Toggle current item
+        if (!isOpen) {
+            answer.style.display = 'block';
+            icon.className = 'fas fa-minus';
+        } else {
+            answer.style.display = 'none';
+            icon.className = 'fas fa-plus';
+        }
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i=0; i<cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.startsWith(name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length+1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function upvote(toolId) {
+        fetch("{% url 'tools:upvote' 0 %}".replace('0', toolId), {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken'),
+                'Accept': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                document.getElementById(`upvotes-${toolId}`).innerText = data.upvotes;
+            }
+        });
+    }
+</script>
+</body>
+</html>

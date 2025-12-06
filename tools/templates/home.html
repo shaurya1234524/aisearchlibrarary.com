@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aixploria Clone</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Aixploria Clone</h1>
+        <form method="get">
+            <input type="text" name="q" placeholder="Search tools..." value="{{ query }}">
+            <button type="submit">Search</button>
+        </form>
+    </header>
+
+    <main>
+        <h2>All Tools</h2>
+        <div class="tool-grid">
+            {% for tool in tools %}
+                <div class="tool-card">
+                    {% if tool.image %}
+                        <img src="{{ tool.image.url }}" alt="{{ tool.name }}">
+                    {% endif %}
+                    <h3>{{ tool.name }}</h3>
+                    <p>{{ tool.description|truncatewords:20 }}</p>
+                    <a href="{{ tool.website }}" target="_blank">Visit Website</a>
+                </div>
+            {% empty %}
+                <p>No tools found.</p>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>
