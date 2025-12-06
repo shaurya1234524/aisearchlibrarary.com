@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% block content %}
+    <div class="container">
+        <h1>All Categories</h1>
+<ul>
+{% for category in categories %}
+    <li>
+        <a href="{% url 'tools:category_detail' category.slug %}">{{ category.name }}</a>
+    </li>
+{% endfor %}
+</ul>
+
+</div>
+{% endblock %}
+
+</body>
+</html>

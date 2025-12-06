@@ -1,0 +1,601 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Best Productivity AI Tools 2025 - Boost Your Efficiency | Latest Ai Tools</title>
+    <meta name="description" content="Discover the top {{ total_tools }}+ productivity AI tools in 2025. Free, premium, and freemium tools to boost your efficiency, manage tasks, and streamline workflows. Expert reviews and comparisons.">
+    <meta name="keywords" content="productivity AI tools, task management AI, workflow automation, efficiency tools, AI productivity software, project management AI, time tracking AI, productivity boosters 2025">
+    <meta name="author" content="Latest Ai Tools">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Best Productivity AI Tools 2025 - Boost Your Efficiency">
+    <meta property="og:description" content="Discover the top productivity AI tools to boost your efficiency. Free, premium, and freemium options with expert reviews.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:image" content="{% static 'images/productivity-tools-og.jpg' %}">
+    <meta property="og:site_name" content="Latest Ai Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Best Productivity AI Tools 2025">
+    <meta name="twitter:description" content="Discover the top productivity AI tools to boost your efficiency. Free, premium, and freemium options.">
+    <meta name="twitter:image" content="{% static 'images/productivity-tools-og.jpg' %}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Productivity AI Tools",
+        "description": "Comprehensive collection of productivity AI tools to boost efficiency and streamline workflows",
+        "url": "{{ request.build_absolute_uri }}",
+        "mainEntity": {
+            "@type": "ItemList",
+            "name": "Productivity AI Tools",
+            "description": "List of productivity AI tools",
+            "numberOfItems": "{{ total_tools }}"
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "{% url 'tools:list' %}"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Productivity Tools",
+                    "item": "{{ request.build_absolute_uri }}"
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Critical CSS -->
+    <style>
+        :root {
+            --primary-color: #1a2a6c;
+            --secondary-color: #2c3e50;
+            --accent-color: #e94560;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+            --card-bg: #fff;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 40px 0;
+            background-color: white;
+            margin: -30px 0 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-item p {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        
+        /* Filters Section */
+        .filters-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+        
+        .filters-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .filters-form input,
+        .filters-form select {
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .filters-form input:focus,
+        .filters-form select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .filter-btn {
+            background: linear-gradient(135deg, var(--accent-color), #c13651);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.3);
+        }
+        
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .tool-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .tool-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .tool-card:hover .tool-image img {
+            transform: scale(1.05);
+        }
+        
+        .tool-content {
+            padding: 25px;
+        }
+        
+        .tool-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .tool-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .tool-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .Free { background-color: var(--success-color); }
+        .Premium { background-color: var(--danger-color); }
+        .Freemium { background-color: var(--warning-color); color: #333; }
+        
+        .upvotes {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .tool-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 42, 108, 0.3);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, var(--success-color), #20c997);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+        
+        /* Pagination */
+        .pagination {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .pagination a,
+        .pagination span {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 0 5px;
+            border-radius: 8px;
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid #e9ecef;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        
+        .pagination .current {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        /* Related Categories */
+        .related-categories {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-top: 40px;
+        }
+        
+        .related-categories h3 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .related-category {
+            padding: 15px;
+            background: var(--bg-color);
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+        
+        .related-category:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 20px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .breadcrumb a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .filters-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tool-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+    
+    <!-- Load fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Breadcrumb -->
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="{% url 'tools:list' %}">Home</a> > 
+            <a href="{% url 'tools:category_list' %}">Categories</a> > 
+            <span>Productivity Tools</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <section class="header">
+        <div class="container">
+            <h1><i class="fas fa-rocket"></i> Productivity AI Tools</h1>
+            <p>Boost your efficiency and streamline workflows with the best productivity AI tools. Discover {{ total_tools }}+ tools to manage tasks, automate processes, and maximize your productivity.</p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>{{ total_tools }}</h3>
+                    <p>Total Tools</p>
+                </div>
+                <div class="stat-item">
+                    <h3>{{ free_tools }}</h3>
+                    <p>Free Tools</p>
+                </div>
+                <div class="stat-item">
+                    <h3>{{ premium_tools }}</h3>
+                    <p>Premium Tools</p>
+                </div>
+                <div class="stat-item">
+                    <h3>{{ freemium_tools }}</h3>
+                    <p>Freemium Tools</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="container">
+            <form method="get" class="filters-form">
+                <input type="text" name="search" placeholder="Search productivity tools..." value="{{ search_query }}" class="search-input">
+                <select name="pricing">
+                    <option value="">All Pricing</option>
+                    <option value="Free" {% if selected_pricing == 'Free' %}selected{% endif %}>Free</option>
+                    <option value="Premium" {% if selected_pricing == 'Premium' %}selected{% endif %}>Premium</option>
+                    <option value="Freemium" {% if selected_pricing == 'Freemium' %}selected{% endif %}>Freemium</option>
+                </select>
+                <select name="sort">
+                    <option value="upvotes" {% if selected_sort == 'upvotes' %}selected{% endif %}>Most Popular</option>
+                    <option value="created" {% if selected_sort == 'created' %}selected{% endif %}>Newest</option>
+                </select>
+                <button type="submit" class="filter-btn">
+                    <i class="fas fa-filter"></i> Filter Tools
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Tools Grid -->
+    <section class="container">
+        {% if tools %}
+            <div class="tools-grid">
+                {% for tool in tools %}
+                <div class="tool-card">
+                    <div class="tool-image">
+                        {% if tool.image %}
+                            <img src="{{ tool.image.url }}" alt="{{ tool.name }} - Productivity AI Tool" loading="lazy">
+                        {% else %}
+                            <div style="width:100%; height:100%; background:linear-gradient(135deg, #f8f9fa, #e9ecef); display:flex;align-items:center;justify-content:center;">
+                                <i class="fas fa-tools" style="font-size:3rem; color:#666;"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="tool-content">
+                        <h3 class="tool-name">{{ tool.name }}</h3>
+                        <p class="tool-description">{{ tool.description|truncatewords:20 }}</p>
+                        <div class="tool-meta">
+                            <span class="pricing-badge {{ tool.pricing }}">{{ tool.pricing }}</span>
+                            <span class="upvotes"><i class="fas fa-thumbs-up"></i> {{ tool.upvotes }}</span>
+                        </div>
+                        <div class="tool-actions">
+                            {% if tool.website %}
+                                <a href="{{ tool.website }}" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-external-link-alt"></i> Visit Website
+                                </a>
+                            {% endif %}
+                            <a href="{% url 'tools:detail' tool.id %}" class="btn btn-success">
+                                <i class="fas fa-info-circle"></i> View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div style="text-align: center; padding: 60px 20px;">
+                <i class="fas fa-search" style="font-size: 4rem; color: #ccc; margin-bottom: 20px;"></i>
+                <h3>No productivity tools found</h3>
+                <p>Try adjusting your search criteria or browse other categories.</p>
+            </div>
+        {% endif %}
+    </section>
+
+    <!-- Pagination -->
+    {% if page_obj.has_other_pages %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if selected_pricing %}pricing={{ selected_pricing }}&{% endif %}{% if selected_sort %}sort={{ selected_sort }}&{% endif %}page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+        
+        <span class="current">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+        
+        {% if page_obj.has_next %}
+            <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if selected_pricing %}pricing={{ selected_pricing }}&{% endif %}{% if selected_sort %}sort={{ selected_sort }}&{% endif %}page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Related Categories -->
+    {% if related_categories %}
+    <section class="related-categories">
+        <div class="container">
+            <h3><i class="fas fa-layer-group"></i> Explore Related Categories</h3>
+            <div class="related-grid">
+                {% for category in related_categories %}
+                <a href="{% url 'tools:'|add:category.name|lower|cut:' '|cut:'/'|cut:'&'|add:'_tools' %}" class="related-category">
+                    <strong>{{ category.name }}</strong>
+                    <br>
+                    <small>{{ category.count }} tools</small>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add loading animation for images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+            });
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.3s ease';
+        });
+    </script>
+</body>
+</html>
