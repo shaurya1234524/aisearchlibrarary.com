@@ -29,7 +29,6 @@ yarl==1.20.1
 # Utilities
 python-dateutil==2.9.0.post0
 pytz==2025.2
-python-dotenv==1.1.1
 click==8.2.1
 Jinja2==3.1.6
 Pillow==11.3.0
@@ -37,27 +36,23 @@ lxml==6.0.1
 beautifulsoup4==4.13.4
 psycopg2==2.9.10
 
-# Security / crypto (keep reasonably modern)
+# Security / crypto
 cryptography==46.0.1
 bcrypt==4.3.0
 pycparser==2.22
 
-# Data / pandas / numpy ecosystem
+# Data
 numpy==2.3.2
 pandas==2.3.1
 scikit-learn==1.7.1
 scipy==1.16.1
 
-# Dev / packaging
+# Packaging
 setuptools==80.9.0
 wheel==0.40.0
 
-# Optional helpers used in your project
-gunicorn==23.0.0
-dj-database-url==3.0.1
-
-# Fix cffi to a modern release (replaced old broken 2.0.0)
+# Fix cffi
 cffi>=1.17.1
 
-# Stable date for dependencies used elsewhere
+# Stable date
 tzdata==2025.2
